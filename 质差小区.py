@@ -25,12 +25,11 @@ def get_txt():
 
 
 def update_result(d, d_list):
-    for i in d_list:
+    for index,i in enumerate(d_list):
         if d[9] == i[9]:
             if d[1] > i[1]:
-                temp = i[-1]
-                i = d
-                i.append(temp + 1)
+                d.append(i[-1]+1)
+                d_list[index]=d
             else:
                 i[-1] += 1
             break
@@ -103,19 +102,16 @@ for tf in get_txt():
                 # Ecsfb60
 
                 # Scsfb40
-                if ptof(one_data[20]) == 0 and (float(one_data[21]) > 40
-                                                and float(one_data[21]) <= 60):
+                if ptof(one_data[20]) == 0 and (float(one_data[21]) > 40 and float(one_data[21]) <= 60):
                     update_result(one_data, csfb40)
                 # Ecsfb40
 
                 # Sprb
-                if ptof(one_data[22]) >= 0.9 and (float(one_data[24]) < 10 and
-                                                  float(one_data[23]) > 150):
+                if ptof(one_data[22]) >= 0.9 and (float(one_data[24]) < 10 and float(one_data[23]) > 150):
                     update_result(one_data, prb)
                 # Eprb
-
                 # Slow10
-                if float(one_data[26]) > 400 and ptof(one_data[25]) > 90:
+                if float(one_data[26]) > 400 and ptof(one_data[25]) > 0.9:
                     update_result(one_data, low10)
                 # Elow10
             # 2.E开始处理数据
